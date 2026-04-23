@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class ReusableCard extends StatelessWidget {
   //const ReusableCard({super.key});   usually for things like animation where your widget moves
 
-  ReusableCard({
+  ReusableCard( {
     required this.colour,
     required this.cardchild,
     this.onPress,

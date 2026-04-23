@@ -92,18 +92,14 @@ class _InputPageState extends State<InputPage> {
                     cardchild: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-
                         Text("HEIGHT", style: kLabeltextstyle),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.baseline,
                           textBaseline: TextBaseline.alphabetic,
                           children: <Widget>[
-
                             Text(height.toString(), style: khugeTextStyle),
                             Text("cm", style: kSmalltextStyle),
-
-
                           ],
                         ),
                         Slider(
@@ -112,9 +108,10 @@ class _InputPageState extends State<InputPage> {
                           max: 220,
                           onChanged: (double newvalue) {
                             setState(() {
-                              height=newvalue.round();
+                              height = newvalue.round();
                             });
-                          },),
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -128,13 +125,61 @@ class _InputPageState extends State<InputPage> {
                 Expanded(
                   child: ReusableCard(
                     colour: kPassifreusiablecardcolor,
-                    cardchild: Column(children: <Widget>[]),
+                    cardchild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      children: <Widget>[
+                        Text("Weight", style: kLabeltextstyle),
+
+                        Row(
+                          children: [
+                            FloatingActionButton.small(
+                              shape:  CircleBorder(),
+                              backgroundColor: Color(0xFF2d3559),
+                              onPressed: () {},
+                              child: (FaIcon(FontAwesomeIcons.minus,color: Colors.white,)),
+                            ),
+                            Text("74", style: khugeTextStyle),
+                            FloatingActionButton.small(
+                              shape:  CircleBorder(),
+                              backgroundColor: Color(0xFF2d3559),
+                              onPressed: () {},
+                              child: (FaIcon(FontAwesomeIcons.plus,color: Colors.white,)),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(
                   child: ReusableCard(
                     colour: kPassifreusiablecardcolor,
-                    cardchild: Column(children: <Widget>[]),
+                    cardchild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+
+                      children: <Widget>[
+                        Text("Age", style: kLabeltextstyle),
+
+                        Row(
+                          children: [
+                            FloatingActionButton.small(
+                              shape:  CircleBorder(),
+                              backgroundColor: Color(0xFF2d3559),
+                              onPressed: () {},
+                              child: (FaIcon(FontAwesomeIcons.minus,color: Colors.white,)),
+                            ),
+                            Text("23", style: khugeTextStyle),
+                            FloatingActionButton.small(
+                              shape:  CircleBorder(),
+                              backgroundColor: Color(0xFF2d3559),
+                              onPressed: () {},
+                              child: (FaIcon(FontAwesomeIcons.plus,color: Colors.white,)),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ],
