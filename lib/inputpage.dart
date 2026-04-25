@@ -35,6 +35,8 @@ class _InputPageState extends State<InputPage> {
   //}
   Gender? selectedgender;
   int height = 180;
+  int weight = 74;
+  int age = 24;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -102,15 +104,30 @@ class _InputPageState extends State<InputPage> {
                             Text("cm", style: kSmalltextStyle),
                           ],
                         ),
-                        Slider(
-                          value: height.toDouble(),
-                          min: 120,
-                          max: 220,
-                          onChanged: (double newvalue) {
-                            setState(() {
-                              height = newvalue.round();
-                            });
-                          },
+                        SliderTheme(
+                          data: SliderTheme.of(context).copyWith(
+                            thumbShape: RoundSliderThumbShape(
+                              enabledThumbRadius: 15.0,
+                            ),
+                            overlayShape: RoundSliderOverlayShape(
+                              overlayRadius: 30,
+                            ),
+                            thumbColor: Theme.of(context).colorScheme.primary,
+                            activeTrackColor: Theme.of(context).colorScheme.primary,
+                            inactiveTrackColor:
+                            Theme.of(context).colorScheme.primary.withValues(alpha: 0.3)
+
+                          ),
+                          child: Slider(
+                            value: height.toDouble(),
+                            min: 120,
+                            max: 220,
+                            onChanged: (double newvalue) {
+                              setState(() {
+                                height = newvalue.round();
+                              });
+                            },
+                          ),
                         ),
                       ],
                     ),
@@ -132,19 +149,34 @@ class _InputPageState extends State<InputPage> {
                         Text("Weight", style: kLabeltextstyle),
 
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             FloatingActionButton.small(
-                              shape:  CircleBorder(),
+                              shape: CircleBorder(),
                               backgroundColor: Color(0xFF2d3559),
-                              onPressed: () {},
-                              child: (FaIcon(FontAwesomeIcons.minus,color: Colors.white,)),
+                              onPressed: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                              child: (FaIcon(
+                                FontAwesomeIcons.minus,
+                                color: Colors.white,
+                              )),
                             ),
-                            Text("74", style: khugeTextStyle),
+                            Text(weight.toString(), style: khugeTextStyle),
                             FloatingActionButton.small(
-                              shape:  CircleBorder(),
+                              shape: CircleBorder(),
                               backgroundColor: Color(0xFF2d3559),
-                              onPressed: () {},
-                              child: (FaIcon(FontAwesomeIcons.plus,color: Colors.white,)),
+                              onPressed: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                              child: (FaIcon(
+                                FontAwesomeIcons.plus,
+                                color: Colors.white,
+                              )),
                             ),
                           ],
                         ),
@@ -162,19 +194,35 @@ class _InputPageState extends State<InputPage> {
                         Text("Age", style: kLabeltextstyle),
 
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
+
                             FloatingActionButton.small(
-                              shape:  CircleBorder(),
+                              shape: CircleBorder(),
                               backgroundColor: Color(0xFF2d3559),
-                              onPressed: () {},
-                              child: (FaIcon(FontAwesomeIcons.minus,color: Colors.white,)),
+                              onPressed: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                              child: (FaIcon(
+                                FontAwesomeIcons.minus,
+                                color: Colors.white,
+                              )),
                             ),
-                            Text("23", style: khugeTextStyle),
+                            Text(age.toString(), style: khugeTextStyle),
                             FloatingActionButton.small(
-                              shape:  CircleBorder(),
+                              shape: CircleBorder(),
                               backgroundColor: Color(0xFF2d3559),
-                              onPressed: () {},
-                              child: (FaIcon(FontAwesomeIcons.plus,color: Colors.white,)),
+                              onPressed: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                              child: (FaIcon(
+                                FontAwesomeIcons.plus,
+                                color: Colors.white,
+                              )),
                             ),
                           ],
                         ),
