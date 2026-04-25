@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusiable_card.dart';
 import 'icon_content.dart';
 import 'constants.dart';
+import 'package:bmi_caaalculator/result_page.dart';
 
 enum Gender { male, female }
 
@@ -113,10 +114,12 @@ class _InputPageState extends State<InputPage> {
                               overlayRadius: 30,
                             ),
                             thumbColor: Theme.of(context).colorScheme.primary,
-                            activeTrackColor: Theme.of(context).colorScheme.primary,
-                            inactiveTrackColor:
-                            Theme.of(context).colorScheme.primary.withValues(alpha: 0.3)
-
+                            activeTrackColor: Theme.of(
+                              context,
+                            ).colorScheme.primary,
+                            inactiveTrackColor: Theme.of(
+                              context,
+                            ).colorScheme.primary.withValues(alpha: 0.3),
                           ),
                           child: Slider(
                             value: height.toDouble(),
@@ -151,33 +154,13 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            FloatingActionButton.small(
-                              shape: CircleBorder(),
-                              backgroundColor: Color(0xFF2d3559),
-                              onPressed: () {
-                                setState(() {
-                                  weight--;
-                                });
-                              },
-                              child: (FaIcon(
-                                FontAwesomeIcons.minus,
-                                color: Colors.white,
-                              )),
-                            ),
+                            RoundIconButton(faIcon: FontAwesomeIcons.minus, onPress: (){setState(() {
+                              weight--;
+                            });}),
                             Text(weight.toString(), style: khugeTextStyle),
-                            FloatingActionButton.small(
-                              shape: CircleBorder(),
-                              backgroundColor: Color(0xFF2d3559),
-                              onPressed: () {
-                                setState(() {
-                                  weight++;
-                                });
-                              },
-                              child: (FaIcon(
-                                FontAwesomeIcons.plus,
-                                color: Colors.white,
-                              )),
-                            ),
+                            RoundIconButton(faIcon: FontAwesomeIcons.plus, onPress: (){setState(() {
+                              weight++;
+                            });})
                           ],
                         ),
                       ],
@@ -196,34 +179,13 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-
-                            FloatingActionButton.small(
-                              shape: CircleBorder(),
-                              backgroundColor: Color(0xFF2d3559),
-                              onPressed: () {
-                                setState(() {
-                                  age--;
-                                });
-                              },
-                              child: (FaIcon(
-                                FontAwesomeIcons.minus,
-                                color: Colors.white,
-                              )),
-                            ),
+                            RoundIconButton(faIcon: FontAwesomeIcons.minus, onPress: (){setState(() {
+                              age--;
+                            });}),
                             Text(age.toString(), style: khugeTextStyle),
-                            FloatingActionButton.small(
-                              shape: CircleBorder(),
-                              backgroundColor: Color(0xFF2d3559),
-                              onPressed: () {
-                                setState(() {
-                                  age++;
-                                });
-                              },
-                              child: (FaIcon(
-                                FontAwesomeIcons.plus,
-                                color: Colors.white,
-                              )),
-                            ),
+                            RoundIconButton(faIcon: FontAwesomeIcons.plus, onPress: (){setState(() {
+                              age++;
+                            });})
                           ],
                         ),
                       ],
@@ -233,14 +195,43 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.only(top: 10.0),
-            color: kBottomcontainercolor,
-            width: double.infinity,
-            height: kBottomcontainerheight,
-          ),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ResultPage()),
+              );
+            },
+            child: Container(
+              margin: const EdgeInsets.only(top: 10.0),
+              color: kBottomcontainercolor,
+              width: double.infinity,
+              height: kBottomcontainerheight,
+              child : Center(child: Text("CALCULATE",style: TextStyle(fontSize: 35.0),),),
+            ),
+          )
+
         ],
       ),
     );
   }
+}
+
+class RoundIconButton extends StatelessWidget {
+  RoundIconButton({ required this.faIcon,required this.onPress});
+  final FaIconData faIcon;
+  final VoidCallback? onPress;
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      child : FaIcon(faIcon),
+      shape: CircleBorder(),
+      fillColor: Color(0xFF2d3559),
+      constraints: const BoxConstraints.tightFor(width: 40.0, height: 40.0),
+      elevation: 6,
+      onPressed: onPress,
+    );
+  }
+
+
 }
