@@ -154,13 +154,23 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            RoundIconButton(faIcon: FontAwesomeIcons.minus, onPress: (){setState(() {
-                              weight--;
-                            });}),
+                            RoundIconButton(
+                              faIcon: FontAwesomeIcons.minus,
+                              onPress: () {
+                                setState(() {
+                                  weight--;
+                                });
+                              },
+                            ),
                             Text(weight.toString(), style: khugeTextStyle),
-                            RoundIconButton(faIcon: FontAwesomeIcons.plus, onPress: (){setState(() {
-                              weight++;
-                            });})
+                            RoundIconButton(
+                              faIcon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  weight++;
+                                });
+                              },
+                            ),
                           ],
                         ),
                       ],
@@ -179,13 +189,23 @@ class _InputPageState extends State<InputPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            RoundIconButton(faIcon: FontAwesomeIcons.minus, onPress: (){setState(() {
-                              age--;
-                            });}),
+                            RoundIconButton(
+                              faIcon: FontAwesomeIcons.minus,
+                              onPress: () {
+                                setState(() {
+                                  age--;
+                                });
+                              },
+                            ),
                             Text(age.toString(), style: khugeTextStyle),
-                            RoundIconButton(faIcon: FontAwesomeIcons.plus, onPress: (){setState(() {
-                              age++;
-                            });})
+                            RoundIconButton(
+                              faIcon: FontAwesomeIcons.plus,
+                              onPress: () {
+                                setState(() {
+                                  age++;
+                                });
+                              },
+                            ),
                           ],
                         ),
                       ],
@@ -204,13 +224,18 @@ class _InputPageState extends State<InputPage> {
             },
             child: Container(
               margin: const EdgeInsets.only(top: 10.0),
+              padding:  const EdgeInsets.only(bottom: 20.0),
               color: kBottomcontainercolor,
               width: double.infinity,
               height: kBottomcontainerheight,
-              child : Center(child: Text("CALCULATE",style: TextStyle(fontSize: 35.0),),),
+              child: Center(
+                child: Text(
+                  "CALCULATE",
+                  style: kLArgebuttontextstyle,
+                ),
+              ),
             ),
-          )
-
+          ),
         ],
       ),
     );
@@ -218,13 +243,13 @@ class _InputPageState extends State<InputPage> {
 }
 
 class RoundIconButton extends StatelessWidget {
-  RoundIconButton({ required this.faIcon,required this.onPress});
+  RoundIconButton({required this.faIcon, required this.onPress});
   final FaIconData faIcon;
   final VoidCallback? onPress;
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
-      child : FaIcon(faIcon),
+      child: FaIcon(faIcon),
       shape: CircleBorder(),
       fillColor: Color(0xFF2d3559),
       constraints: const BoxConstraints.tightFor(width: 40.0, height: 40.0),
@@ -232,6 +257,4 @@ class RoundIconButton extends StatelessWidget {
       onPressed: onPress,
     );
   }
-
-
 }

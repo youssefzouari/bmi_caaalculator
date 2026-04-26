@@ -6,3 +6,4 @@ const kBottomcontainercolor = Color(0xFFEB1555);
 const kLabeltextstyle=TextStyle(fontSize: 18.0 ,color: Color(0xFF8D8E98));
 const khugeTextStyle=TextStyle(fontSize: 60.0, fontWeight: FontWeight.w900,);
 const kSmalltextStyle=TextStyle(fontSize: 40.0, fontWeight: FontWeight.w500,);
+const kLArgebuttontextstyle=TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold,);
