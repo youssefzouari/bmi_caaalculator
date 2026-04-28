@@ -4,6 +4,8 @@ import 'reusiable_card.dart';
 import 'icon_content.dart';
 import 'constants.dart';
 import 'package:bmi_caaalculator/result_page.dart';
+import 'package:bmi_caaalculator/buttombutton.dart';
+import 'package:bmi_caaalculator/calculator_brain.dart';
 
 enum Gender { male, female }
 
@@ -215,26 +217,24 @@ class _InputPageState extends State<InputPage> {
               ],
             ),
           ),
-          GestureDetector(
+          ButtomButton(
+            buttonTitle: "CALCULATE",
             onTap: () {
+              CalculatorBrain calc = CalculatorBrain(
+                weight: weight,
+                height: height,
+              );
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ResultPage()),
+                MaterialPageRoute(
+                  builder: (context) => ResultPage(
+                    bmiresult: calc.calculateBmi(),
+                    resulttext: calc.getresult(),
+                    interpretation: calc.getInterpretation(),
+                  ),
+                ),
               );
             },
-            child: Container(
-              margin: const EdgeInsets.only(top: 10.0),
-              padding:  const EdgeInsets.only(bottom: 20.0),
-              color: kBottomcontainercolor,
-              width: double.infinity,
-              height: kBottomcontainerheight,
-              child: Center(
-                child: Text(
-                  "CALCULATE",
-                  style: kLArgebuttontextstyle,
-                ),
-              ),
-            ),
           ),
         ],
       ),

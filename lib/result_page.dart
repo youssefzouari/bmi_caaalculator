@@ -1,52 +1,55 @@
 import 'package:bmi_caaalculator/constants.dart';
+import 'package:bmi_caaalculator/reusiable_card.dart';
 import 'package:flutter/material.dart';
+import 'package:bmi_caaalculator/buttombutton.dart';
 
 class ResultPage extends StatelessWidget {
-  const ResultPage({super.key});
-
+  ResultPage({
+    required this.bmiresult,
+    required this.interpretation,
+    required this.resulttext,
+  });
+  final String bmiresult;
+  final String resulttext;
+  final String interpretation;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("BMI CALCULATOR")),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Expanded(flex: 1, child: Text("your result", style: kSmalltextStyle)),
           Expanded(
-            flex: 10,
-            child: Card(
-              color: kPassifreusiablecardcolor,
-              child: Column(
+            child: Container(
+              padding: EdgeInsetsDirectional.all(15.0),
+              child: Text("your result", style: khugeTextStyle),
+            ),
+          ),
+          Expanded(
+            flex: 5,
+            child: ReusableCard(
+              colour: kPassifreusiablecardcolor,
+              cardchild: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-                  Text("Normal", style: TextStyle(color: Colors.green)),
-                  Text("22.1", style: TextStyle(fontSize: 50.0)),
-                  Text("normal bmi range:", style: kLabeltextstyle),
-                  Text('18 - 25 kg/m2'),
-                  Text("you have a normal body weight good job"),
+                  Text(resulttext, style: kResulttextstyle),
+                  Text(bmiresult, style: khugeTextStyle),
+                  Text(
+                    interpretation,
+                    style: kbodytextstyle,
+                    textAlign: TextAlign.center,
+                  ),
                 ],
               ),
             ),
           ),
-          GestureDetector(
+          ButtomButton(
+            buttonTitle: "RECALCULATE",
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ResultPage()),
-              );
+              Navigator.pop(context);
             },
-            child: Container(
-              margin: const EdgeInsets.only(top: 10.0),
-              padding:  const EdgeInsets.only(bottom: 20.0),
-              color: kBottomcontainercolor,
-              width: double.infinity,
-              height: kBottomcontainerheight,
-              child: Center(
-                child: Text(
-                  "RECALCULATE",
-                  style: kLArgebuttontextstyle,
-                ),
-              ),
-            ),
           ),
         ],
       ),
